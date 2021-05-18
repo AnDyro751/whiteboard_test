@@ -1,8 +1,38 @@
 es:
   loading: Cargando
+  next: Siguiente
+  create: Crear
+  colors:
+    red: Rojo
+    blue: Azul
+    yellow: Amarillo
+    green: Verde
+    orange: Naranjado
+    pink: Rosa
+  characters:
+    new_character: Nuevo personaje
+    first_add_name: Primero asigna el nombre a tu personaje
+    invalid_step: Paso invalido
+    wizard: Mago
+    sorcerer: Hechicero
+    warrior: Guerrero
+    knight: Caballero
+    hunter: Cazador
+    assassin: Asesino
+    priest: Clérigo
+    healer: Curandero
   activerecord:
     errors:
       models:
+        character:
+          attributes:
+            color:
+              inclusion: no está incluido en la lista
+            name:
+              blank: no puede estar vacío
+              too_short:
+                one: es demasiado corto (1 carácter mínimo)
+                other: es demasiado corto (%{count} caracteres mínimo)
         user:
           attributes:
             email:

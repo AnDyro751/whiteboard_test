@@ -1,0 +1,12 @@
+<h1>Ingresa el nombre de tu personaje</h1>
+
+<%= form_with(model: character, url: {action: "next_step", controller: "characters"}, data: {remote: true}) do |form| %>
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+  <%= form.hidden_field :step, value: 1 %>
+  <div class="actions">
+    <%= form.submit I18n.t("next") %>
+  </div>
+<% end %>

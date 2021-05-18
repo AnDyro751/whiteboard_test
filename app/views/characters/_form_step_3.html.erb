@@ -1,0 +1,12 @@
+<h1>Selecciona la clase de <strong> <%= @character.name %></strong></h1>
+
+<%= form_with(model: character, url: {action: "create"}, data: {remote: true}) do |form| %>
+  <div class="field">
+    <%= form.label :kind_class %>
+    <%= form.select :kind_class, Character.valid_kind_class %>
+  </div>
+  <%= form.hidden_field :step, value: 3 %>
+  <div class="actions">
+    <%= form.submit I18n.t("create") %>
+  </div>
+<% end %>

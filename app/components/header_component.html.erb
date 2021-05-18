@@ -7,7 +7,9 @@
     </div>
     <div class="w-10/12 flex items-center justify-end space-x-8">
       <% if helpers.user_signed_in? %>
-        <%= link_to I18n.t("users.logout"), destroy_user_session_path, method: :delete, class: "hover:underline text-red-600" %>
+        <div class="w-auto">
+          <%= link_to I18n.t("users.logout"), destroy_user_session_path, method: :delete, class: "hover:underline text-red-600" %>
+        </div>
       <% else %>
         <div class="w-auto">
           <%= link_to I18n.t("users.login"), new_user_session_path, class: helpers.color_button("uppercase text-sm") %>

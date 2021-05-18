@@ -1,0 +1,12 @@
+document.querySelector( "#flash-messages-wrap" ).innerHTML = "";
+<% if @errors.any? %>
+<% @errors.each do |error| %>
+var newError = document.createElement( "div" )
+document.querySelector( "#flash-messages-wrap" ).appendChild( newError ).innerHTML = "<%= j render NotificationComponent.new(type: "alert", data: "#{error.attribute} #{error.message}") %>"
+console.log( "<%= error.attribute %> <%= error.message %>" )
+<% end %>
+<% else %>
+<% if @next_url %>
+Turbolinks.visit( "<%= @next_url %>" )
+<% end %>
+<% end %>

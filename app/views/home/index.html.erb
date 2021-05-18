@@ -1,1 +1,8 @@
-<h1 class="text-4xl" >Hola</h1>
+<% if user_signed_in? %>
+  <% if current_user.character.nil? %>
+    <%= render 'characters/form_step_1', character: @character %>
+  <% else %>
+    <%= render 'characters/my_character', character: @character %>
+  <% end %>
+<% else %>
+<% end %>
