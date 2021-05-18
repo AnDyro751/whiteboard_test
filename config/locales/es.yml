@@ -1,4 +1,8 @@
-en:
+es:
   users:
     login: Iniciar sesión
     sign_up: Registrate
+    remember_me: Recordarme
+    attributes:
+      email: Correo Electrónico
+      password: Contraseña

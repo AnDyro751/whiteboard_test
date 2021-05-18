@@ -1,0 +1,3 @@
+[data-controller-action="sessions-new"], html {
+    @apply bg-gray-100;
+}

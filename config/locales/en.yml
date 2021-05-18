@@ -2,3 +2,8 @@ en:
   users:
     login: Login
     sign_up: Sign Up
+    remember_me: Remember me
+    attributes:
+      email: Email
+      password: Password
+

@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   end
 
   def valid_language?(lang)
-    I18n.available_locales.include?(lang)
+    I18n.available_locales.map(&:to_s).include?(lang)
   end
 
   # @return [I18n] language
@@ -28,6 +28,7 @@ class ApplicationController < ActionController::Base
   # @param [Proc] action
   def set_locale_language(&action)
     locale = params[:locale] || I18n.default_locale
+    logger.debug "#{locale}"
     set_locale(locale, &action)
   end
 
