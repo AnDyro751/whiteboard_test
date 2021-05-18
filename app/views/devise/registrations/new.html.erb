@@ -1,7 +1,7 @@
 <div class="w-full min-h-screen items-center self-center flex">
   <div class="w-6/12 mx-auto p-8 my-8 rounded bg-white shadow-lg">
     <h1 class="text-3xl font-medium py-4"><%= I18n.t("users.sign_up") %></h1>
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), remote: true, html: {class: "w-full flex flex-wrap space-y-4"}) do |f| %>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), remote: false, html: {class: "w-full flex flex-wrap space-y-4 form-without-bg-errors"}) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
 
       <div class="w-full">

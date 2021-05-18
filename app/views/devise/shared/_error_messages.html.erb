@@ -1,14 +1,14 @@
 <% if resource.errors.any? %>
-  <div id="error_explanation">
-    <h2>
+  <div id="error_explanation" class="space-y-3 bg-red-500 text-white px-4 rounded py-4 w-full">
+    <h2 class="text-lg" >
       <%= I18n.t("errors.messages.not_saved",
                  count: resource.errors.count,
                  resource: resource.class.model_name.human.downcase)
-       %>
+      %>
     </h2>
-    <ul>
+    <ul class="space-y-2" >
       <% resource.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+        <li class="text-sm" ><%= message %></li>
       <% end %>
     </ul>
   </div>

@@ -1,4 +1,5 @@
 en:
+  loading: Loading
   users:
     login: Login
     sign_up: Sign Up

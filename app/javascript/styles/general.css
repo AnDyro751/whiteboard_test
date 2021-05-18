@@ -1,3 +1,7 @@
 [data-controller-action="sessions-new"], html {
     @apply bg-gray-100;
 }
+.form-without-bg-errors br{
+    @apply hidden;
+
+}

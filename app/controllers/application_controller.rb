@@ -7,8 +7,18 @@ class ApplicationController < ActionController::Base
     if params[:locale]
       set_locale_language(&action)
     else
-      set_header_language(&action)
+      if session[:locale]
+        set_locale_session(&action)
+      else
+        set_header_language(&action)
+      end
     end
+  end
+
+  # @param [Proc] action
+  # @return [I18n] language
+  def set_locale_session(&action)
+    set_locale(session[:locale], &action)
   end
 
   def valid_language?(lang)
@@ -35,7 +45,9 @@ class ApplicationController < ActionController::Base
   # @param [String] locale
   # @return [I18n] language
   def set_locale(locale, &action)
-    I18n.with_locale(valid_language?(locale) ? locale : I18n.default_locale, &action)
+    valid_locale = valid_language?(locale)
+    session[:locale] = valid_locale ? locale : I18n.default_locale
+    I18n.with_locale(session[:locale], &action)
   end
 
 
