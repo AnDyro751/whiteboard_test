@@ -1,4 +1,5 @@
 es:
+  loading: Cargando
   users:
     login: Iniciar sesión
     sign_up: Registrate
@@ -7,5 +8,6 @@ es:
     attributes:
       email: Correo Electrónico
       password: Contraseña
+      minimum_password_length: "%{length} caracteres como mínimo"
 
   dismiss: "Descartar"

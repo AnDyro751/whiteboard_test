@@ -4,12 +4,12 @@
     <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "w-full flex flex-wrap space-y-4"}) do |f| %>
       <div class="w-full">
         <%= f.label :email, I18n.t("users.attributes.email"), class: label_class %><br/>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "#{input_class} mt-2" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "jonh@email.com", class: "#{input_class} mt-2" %>
       </div>
 
       <div class="w-full">
         <%= f.label :password, I18n.t("users.attributes.password"), class: label_class %><br/>
-        <%= f.password_field :password, autocomplete: "current-password", class: "#{input_class} mt-2" %>
+        <%= f.password_field :password, autocomplete: "current-password", placeholder: "********", class: "#{input_class} mt-2" %>
       </div>
 
       <% if devise_mapping.rememberable? %>
