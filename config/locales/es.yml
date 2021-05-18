@@ -3,6 +3,9 @@ es:
     login: Iniciar sesión
     sign_up: Registrate
     remember_me: Recordarme
+    logout: Cerrar sesión
     attributes:
       email: Correo Electrónico
       password: Contraseña
+
+  dismiss: "Descartar"

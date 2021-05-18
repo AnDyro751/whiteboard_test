@@ -3,7 +3,9 @@ en:
     login: Login
     sign_up: Sign Up
     remember_me: Remember me
+    logout: Logout
     attributes:
       email: Email
       password: Password
+  dismiss: "Dismiss"
 

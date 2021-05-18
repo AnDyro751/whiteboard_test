@@ -13,3 +13,28 @@ import "../styles/general.css"
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+
+function removeNotifications() {
+    Object.values( document.querySelectorAll( ".rails-notification" ) ).map( (el) => {
+        setTimeout( () => {
+            deleteNotification( el )
+        }, 3000 )
+        el.addEventListener( 'click', () => {
+            deleteNotification( el )
+        } )
+    } )
+
+    function deleteNotification(el) {
+        el.classList.remove('opacity-100');
+        el.classList.add( 'opacity-0' );
+        setTimeout( () => {
+            el.classList.add( 'hidden' );
+            el.remove()
+        }, 400 )
+    }
+}
+
+document.addEventListener( 'turbolinks:load', () => {
+    removeNotifications()
+} )

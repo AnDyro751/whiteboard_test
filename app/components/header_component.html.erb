@@ -4,12 +4,16 @@
       <img class="h-8" src="/images/logo_whiteboard.png" alt="Whiteboard logo">
     </div>
     <div class="w-10/12 flex items-center justify-end space-x-8">
-      <div class="w-auto">
-        <%= link_to I18n.t("users.login"), new_user_session_path, class: helpers.color_button("uppercase text-sm") %>
-      </div>
-      <div class="w-auto">
-        <%= link_to I18n.t("users.sign_up"), new_user_session_path, class: "hover:underline" %>
-      </div>
+      <% if helpers.user_signed_in? %>
+        <%= link_to I18n.t("users.logout"), destroy_user_session_path, method: :delete, class: "hover:underline text-red-600" %>
+      <% else %>
+        <div class="w-auto">
+          <%= link_to I18n.t("users.login"), new_user_session_path, class: helpers.color_button("uppercase text-sm") %>
+        </div>
+        <div class="w-auto">
+          <%= link_to I18n.t("users.sign_up"), new_user_session_path, class: "hover:underline" %>
+        </div>
+      <% end %>
     </div>
   </div>
 </header>
