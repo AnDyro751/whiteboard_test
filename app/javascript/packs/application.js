@@ -15,7 +15,7 @@ Turbolinks.start()
 ActiveStorage.start()
 
 
-function removeNotifications() {
+window.removeNotifications = function removeNotifications() {
     Object.values( document.querySelectorAll( ".rails-notification" ) ).map( (el) => {
         setTimeout( () => {
             deleteNotification( el )
@@ -36,5 +36,5 @@ function removeNotifications() {
 }
 
 document.addEventListener( 'turbolinks:load', () => {
-    removeNotifications();
+    window.removeNotifications();
 } )

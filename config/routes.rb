@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: {
+      sessions: 'users/sessions'
+  }
   get "/step/:step", to: "characters#new", as: "new_step"
   post "/next_step", to: "characters#next_step", as: "next_step"
   post "/create", to: "characters#create", as: :create

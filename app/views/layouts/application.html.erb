@@ -13,8 +13,8 @@
 
 <body>
 <%= render HeaderComponent.new() %>
-<main class="mt-16" data-controller-action="<%= controller_name %>-<%= action_name %>">
-  <div class="w-11/12 mx-auto mt-20">
+<main data-controller-action="<%= controller_name %>-<%= action_name %>">
+  <div class="w-11/12 mx-auto ">
     <div class="w-full md:w-6/12 mx-auto space-y-3" id="flash-messages-wrap">
       <% flash.each do |type, data| %>
         <%= render NotificationComponent.new(type: type, data: data) %>

@@ -1,14 +1,20 @@
-<p>
-  <strong>Name:</strong>
-  <%= @character.name %>
-</p>
+<div>
+  <h1 class="py-4 text-2xl md:text-3xl font-medium"><%= I18n.t("showing_character") %></h1>
+  <div class="flex space-y-3 flex-wrap">
+    <p class="w-full">
+      <strong><%= I18n.t("characters.name") %>:</strong>
+      <%= @character.name %>
+    </p>
 
-<p>
-  <strong>Color:</strong>
-  <%= @character.color %>
-</p>
+    <p class="w-full">
+      <strong><%= I18n.t("characters.color") %>:</strong>
+      <%= I18n.t("colors.#{@character.color}") %>
+    </p>
 
-<p>
-  <strong>Kind class:</strong>
-  <%= @character.kind_class %>
-</p>
+    <p class="w-full">
+      <strong><%= I18n.t("characters.kind_class") %>:</strong>
+      <%= I18n.t("characters.#{@character.kind_class}") %>
+    </p>
+  </div>
+
+</div>

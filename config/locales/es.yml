@@ -3,6 +3,7 @@ es:
   next: Siguiente
   create: Crear
   back: Atrás
+  showing_character: Mostrando personaje
   colors:
     red: Rojo
     blue: Azul
