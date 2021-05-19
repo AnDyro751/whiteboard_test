@@ -12,7 +12,7 @@ class CharactersController < ApplicationController
     @character = Character.new(session[:new_character] ? session[:new_character].merge(character_params) : character_params)
     @character.valid?
     @errors = @character.valid_errors_step(params['character']['step'].to_i, @character.errors)
-    @next_url = new_character_path(params['character']['step'].to_i + 1)
+    @next_url = new_step_path(params['character']['step'].to_i + 1)
     session[:new_character] = @character.attributes
     respond_to do |format|
       format.js
@@ -39,11 +39,11 @@ class CharactersController < ApplicationController
   def set_character_step
     if Character.valid_step?(params['step'].to_i)
       if params['step'].to_i > 1
-        redirect_to new_character_path(1), alert: I18n.t('characters.first_add_name') if session[:new_character].nil?
+        redirect_to new_step_path(1), alert: I18n.t('characters.first_add_name') if session[:new_character].nil?
       end
       @step = params['step'].to_s
     else
-      redirect_to new_character_path(1), alert: I18n.t('characters.invalid_step')
+      redirect_to new_step_path(1), alert: I18n.t('characters.invalid_step')
     end
   end
 

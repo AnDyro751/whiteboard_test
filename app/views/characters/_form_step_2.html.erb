@@ -1,12 +1,13 @@
-<h1>Ingresa el color de <strong> <%= @character.name %></strong></h1>
-
-<%= form_with(model: character, url: {action: "next_step"}, data: {remote: true}) do |form| %>
-  <div class="field">
-    <%= form.label :color %>
-    <%= form.select :color, Character.valid_colors %>
-  </div>
-  <%= form.hidden_field :step, value: 2 %>
-  <div class="actions">
-    <%= form.submit I18n.t("next") %>
-  </div>
+<%= render FormWrapperComponent.new(title: I18n.t("characters.enter_character_color", character: @character.name)) do %>
+  <%= form_with(model: character, url: {action: "next_step"}, data: {remote: true}) do |form| %>
+    <div class="w-full">
+      <%= form.label :color, I18n.t("characters.color"), class: label_class %>
+      <%= form.select :color, Character.valid_colors, {}, {class: "#{select_class} mt-2"} %>
+    </div>
+    <%= form.hidden_field :step, value: 2 %>
+    <div class="w-full mt-4 flex items-center space-x-4">
+      <%= link_to I18n.t("back"), new_step_path(1), class: "hover:underline text-gray-700 hover:text-gray-900" %>
+      <%= form.submit I18n.t("next"), class: color_button %>
+    </div>
+  <% end %>
 <% end %>

@@ -1,12 +1,13 @@
-<h1>Selecciona la clase de <strong> <%= @character.name %></strong></h1>
-
-<%= form_with(model: character, url: {action: "create"}, data: {remote: true}) do |form| %>
-  <div class="field">
-    <%= form.label :kind_class %>
-    <%= form.select :kind_class, Character.valid_kind_class %>
-  </div>
-  <%= form.hidden_field :step, value: 3 %>
-  <div class="actions">
-    <%= form.submit I18n.t("create") %>
-  </div>
+<%= render FormWrapperComponent.new(title: I18n.t("characters.enter_character_class", character: @character.name)) do %>
+  <%= form_with(model: character, url: {action: "create"}, data: {remote: true}) do |form| %>
+    <div class="w-full">
+      <%= form.label :kind_class, I18n.t("characters.kind_class"), class: label_class %>
+      <%= form.select :kind_class, Character.valid_kind_class, {}, {class: "#{select_class} mt-2"} %>
+    </div>
+    <%= form.hidden_field :step, value: 3 %>
+    <div class="w-full mt-4 flex items-center space-x-4">
+      <%= link_to I18n.t("back"), new_step_path(2), class: "hover:underline text-gray-700 hover:text-gray-900" %>
+      <%= form.submit I18n.t("create"), class: "#{color_button}", data: {disable_with: I18n.t("loading")} %>
+    </div>
+  <% end %>
 <% end %>

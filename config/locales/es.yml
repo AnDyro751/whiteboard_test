@@ -2,6 +2,7 @@ es:
   loading: Cargando
   next: Siguiente
   create: Crear
+  back: Atrás
   colors:
     red: Rojo
     blue: Azul
@@ -10,6 +11,12 @@ es:
     orange: Naranjado
     pink: Rosa
   characters:
+    enter_character_name: Ingresa el nombre de tu personaje
+    enter_character_color: "Selecciona el color de %{character}"
+    enter_character_class: "Selecciona la clase de %{character}"
+    kind_class: Clase
+    color: Color
+    name: Nombre
     new_character: Nuevo personaje
     first_add_name: Primero asigna el nombre a tu personaje
     invalid_step: Paso invalido

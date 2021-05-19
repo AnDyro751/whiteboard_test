@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  get "/step/:step", to: "characters#new", as: "new_character"
+  get "/step/:step", to: "characters#new", as: "new_step"
   post "/next_step", to: "characters#next_step", as: "next_step"
   post "/create", to: "characters#create", as: :create
   root 'home#index'
