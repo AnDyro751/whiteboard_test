@@ -1,14 +1,13 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'spec_helper'
-require "capybara/rspec"
-require "database_cleaner"
+require 'database_cleaner'
 ENV['RAILS_ENV'] ||= 'test'
-
-require File.expand_path('../config/environment', __dir__)
-
+require File.expand_path('../../config/environment', __FILE__)
 # Prevent database truncation if the environment is production
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'rspec/rails'
+require_relative './support/controller_macros'
+require 'capybara/rspec'
 require 'simplecov'
 SimpleCov.start
 
@@ -44,11 +43,11 @@ RSpec.configure do |config|
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
-  config.use_transactional_fixtures = true
+  config.use_transactional_fixtures = false
 
   # RSpec Rails can automatically mix in different behaviours to your tests
   # based on their file location, for example enabling you to call `get` and
-  # `post` in specs under `spec/controllers`.
+  # `post` in specs under `spec/features`.
   #
   # You can disable this behaviour by removing the line below, and instead
   # explicitly tag your specs with their type, e.g.:
@@ -73,18 +72,18 @@ RSpec.configure do |config|
   end
   Capybara.configure do |config|
     config.default_max_wait_time = 10 #seconds
-    config.default_driver = :selenium
+    config.default_driver = :selenium_chrome
     # config.always_include_port = true
   end
   # Filter lines from Rails gems in backtraces.
   config.filter_rails_from_backtrace!
 
-  config.expect_with :rspec do |c|
-    c.syntax = :expert
+  config.expect_with :rspec do |expectations|
+    expectations.include_chain_clauses_in_custom_matcher_descriptions = true
   end
-
   config.include Devise::Test::ControllerHelpers, :type => :controller
   config.include Warden::Test::Helpers
+  config.extend ControllerMacros, :type => :controller
 
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")

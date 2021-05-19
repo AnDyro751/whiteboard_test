@@ -58,6 +58,7 @@ group :test do
   gem "faker"
   gem "shoulda-matchers", require: false
   gem 'simplecov', require: false
+  gem 'rspec'
 
 end
 
