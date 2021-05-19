@@ -4,6 +4,10 @@ es:
   create: Crear
   back: Atrás
   showing_character: Mostrando personaje
+  unexpected_error: Ha ocurrido un error inesperado
+  langs:
+    spanish: Español
+    english: Inglés
   colors:
     red: Rojo
     blue: Azul

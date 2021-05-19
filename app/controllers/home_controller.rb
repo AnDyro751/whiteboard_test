@@ -3,6 +3,13 @@ class HomeController < ApplicationController
 
   def index; end
 
+  def switch_locale
+    set_locale_in_session(params['locale'])
+    respond_to do |format|
+      format.js
+    end
+  end
+
   private
 
   def set_character
@@ -14,5 +21,6 @@ class HomeController < ApplicationController
                    end
     end
   end
+
 
 end

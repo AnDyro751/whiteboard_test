@@ -13,6 +13,7 @@ import "../styles/general.css"
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+window.Rails = Rails;
 
 
 window.removeNotifications = function removeNotifications() {

@@ -1,24 +1,22 @@
 class ApplicationController < ActionController::Base
-  around_action :switch_locale
+  before_action :set_locale
 
-  # @param [Proc] action
   # @return [I18n] language
-  def switch_locale(&action)
+  def set_locale
     if params[:locale]
-      set_locale_language(&action)
+      set_locale_language
     else
       if session[:locale]
-        set_locale_session(&action)
+        set_locale_session
       else
-        set_header_language(&action)
+        set_header_language
       end
     end
   end
 
-  # @param [Proc] action
   # @return [I18n] language
-  def set_locale_session(&action)
-    set_locale(session[:locale], &action)
+  def set_locale_session
+    set_locale_in_session(session[:locale])
   end
 
   def valid_language?(lang)
@@ -26,28 +24,26 @@ class ApplicationController < ActionController::Base
   end
 
   # @return [I18n] language
-  # @param [Proc] action
-  def set_header_language(&action)
+  def set_header_language
     logger.debug "* Accept-Language: #{request.env['HTTP_ACCEPT_LANGUAGE']}"
     locale = extract_locale_from_accept_language_header
     logger.debug "* Locale set to '#{locale}'"
-    set_locale(locale, &action)
+    set_locale_in_session(locale)
   end
 
   # @return [I18n] language
-  # @param [Proc] action
-  def set_locale_language(&action)
+  def set_locale_language
     locale = params[:locale] || I18n.default_locale
     logger.debug "#{locale}"
-    set_locale(locale, &action)
+    set_locale_in_session(locale)
   end
 
   # @param [String] locale
   # @return [I18n] language
-  def set_locale(locale, &action)
+  def set_locale_in_session(locale)
     valid_locale = valid_language?(locale)
     session[:locale] = valid_locale ? locale : I18n.default_locale
-    I18n.with_locale(session[:locale], &action)
+    I18n.locale = session[:locale]
   end
 
 
