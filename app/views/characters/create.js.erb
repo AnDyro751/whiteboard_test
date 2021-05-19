@@ -1,0 +1,9 @@
+document.querySelector( "#flash-messages-wrap" ).innerHTML = "";
+<% if @character.errors.any? %>
+<% @character.errors.each do |error| %>
+var newError = document.createElement( "div" )
+document.querySelector( "#flash-messages-wrap" ).appendChild( newError ).innerHTML = "<%= j render NotificationComponent.new(type: "alert", data: "#{error.attribute} #{error.message}") %>"
+window.removeNotifications()
+<% end %>
+<% else %>
+<% end %>

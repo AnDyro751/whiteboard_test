@@ -1,5 +1,38 @@
 en:
   loading: Loading
+  next: Next
+  create: Create
+  back: Back
+  showing_character: Showing character
+  unexpected_error: An unexpected error has occurred
+  langs:
+    spanish: Spanish
+    english: English
+  colors:
+    red: Red
+    blue: Blue
+    yellow: Yellow
+    green: Green
+    orange: Orange
+    pink: Pink
+  characters:
+    enter_character_name: Enter character name
+    enter_character_color: "Select the color of %{character}"
+    enter_character_class: "Select the class of %{character}"
+    kind_class: Class
+    color: Color
+    name: Name
+    new_character: New Character
+    first_add_name: First add de character name
+    invalid_step: Invalid step
+    wizard: Wizard
+    sorcerer: Sorcerer
+    warrior: Warrior
+    knight: Knight
+    hunter: Hunter
+    assassin: Assassin
+    priest: Priest
+    healer: Healer
   users:
     login: Login
     sign_up: Sign Up
@@ -8,5 +41,6 @@ en:
     attributes:
       email: Email
       password: Password
+      minimum_password_length: "%{length} caracteres como mínimo"
   dismiss: "Dismiss"
 

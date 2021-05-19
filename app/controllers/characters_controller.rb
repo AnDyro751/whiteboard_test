@@ -28,7 +28,7 @@ class CharactersController < ApplicationController
         session[:new_character] = nil
         format.html { redirect_to root_path, notice: 'Character was successfully created.' }
       else
-        format.html { render :new, status: :unprocessable_entity }
+        format.js
       end
     end
   end

@@ -1,6 +1,6 @@
 <div class="w-full bg-black py-4 mt-10">
   <div class="w-11/12 mx-auto">
-    <div class="w-2/12">
+    <div class="w-1/2 md:w-2/12">
       <%= form_with(model: nil, url: switch_locale_path, data: {remote: true}) do |form| %>
         <%= form.select :locale, options_for_select([[I18n.t("langs.spanish"), "es"], [I18n.t("langs.english"), "en"]], session[:locale]), {}, {class: "#{helpers.select_class} mt-2", onchange: 'window.Rails.fire(this.form, "submit")'} %>
       <% end %>
