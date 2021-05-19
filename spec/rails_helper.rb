@@ -67,7 +67,7 @@ RSpec.configure do |config|
   config.after do |example|
     if example.metadata[:type] == :feature
       # save_and_open_page
-      save_and_open_screenshot
+      # save_and_open_screenshot
     end
   end
   Capybara.configure do |config|
@@ -84,7 +84,12 @@ RSpec.configure do |config|
   config.include Devise::Test::ControllerHelpers, :type => :controller
   config.include Warden::Test::Helpers
   config.extend ControllerMacros, :type => :controller
-
+  Shoulda::Matchers.configure do |config|
+    config.integrate do |with|
+      with.test_framework :rspec
+      with.library :rails
+    end
+  end
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 end

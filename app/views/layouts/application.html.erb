@@ -23,6 +23,9 @@
     <%= yield %>
   </div>
   <%= render FooterComponent.new() %>
+  <% if Rails.env === "development" %>
+    <%= console %>
+  <% end %>
 </main>
 
 

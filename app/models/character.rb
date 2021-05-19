@@ -50,12 +50,6 @@ class Character < ApplicationRecord
     ]
   end
 
-  # @param [Numeric] i
-  # @return [TrueClass]
-  def self.last_step?(i)
-    i === 3
-  end
-
   private
 
 
