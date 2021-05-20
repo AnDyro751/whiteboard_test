@@ -1,16 +1,17 @@
-<h2>Resend confirmation instructions</h2>
+<%= render FormWrapperComponent.new(title: I18n.t("devise.confirmations.new.resend_confirmation_instructions")) do %>
+  <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: {method: :post}) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
 
-<%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+    <div class="field">
+      <%= f.label :email, I18n.t("users.attributes.email"), class: label_class %><br/>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "#{input_class} mt-2", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
+    </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
-  </div>
+    <div class="actions">
+      <%= f.submit I18n.t('devise.confirmations.new.resend_confirmation_instructions'), class: "#{color_button} mt-4" %>
+    </div>
+  <% end %>
 
-  <div class="actions">
-    <%= f.submit "Resend confirmation instructions" %>
-  </div>
+  <%= render "devise/shared/links" %>
 <% end %>
 
-<%= render "devise/shared/links" %>

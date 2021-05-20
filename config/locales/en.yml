@@ -3,6 +3,7 @@ en:
   next: Next
   create: Create
   back: Back
+  login_for_create: Login for create your character
   showing_character: Showing character
   unexpected_error: An unexpected error has occurred
   langs:
@@ -55,6 +56,6 @@ en:
     attributes:
       email: Email
       password: Password
-      minimum_password_length: "%{length} caracteres como mínimo"
+      minimum_password_length: "%{length} characters minimum"
   dismiss: "Dismiss"
 

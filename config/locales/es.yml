@@ -3,6 +3,7 @@ es:
   next: Siguiente
   create: Crear
   back: Atrás
+  login_for_create: Inicia sesión para crear tu personaje
   showing_character: Mostrando personaje
   unexpected_error: Ha ocurrido un error inesperado
   langs:

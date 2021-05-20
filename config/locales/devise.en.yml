@@ -3,6 +3,8 @@
 en:
   devise:
     confirmations:
+      new:
+        resend_confirmation_instructions: Reenviar instrucciones de confirmación
       confirmed: "Your email address has been successfully confirmed."
       send_instructions: "You will receive an email with instructions for how to confirm your email address in a few minutes."
       send_paranoid_instructions: "If your email address exists in our database, you will receive an email with instructions for how to confirm your email address in a few minutes."
@@ -30,6 +32,18 @@ en:
     omniauth_callbacks:
       failure: "Could not authenticate you from %{kind} because \"%{reason}\"."
       success: "Successfully authenticated from %{kind} account."
+    shared:
+      links:
+        back: Back
+        didn_t_receive_confirmation_instructions: "Haven't received the confirmation instructions?"
+        didn_t_receive_unlock_instructions: "Haven't received the unlock instructions?"
+        forgot_your_password: "Have you forgotten your password?"
+        sign_in: Login
+        sign_in_with_provider: Sign in with %{provider}
+        sign_up: Sign Up
+      minimum_password_length:
+        one: "(%{count} character minimum)"
+        other: "(%{count} characters minimum)"
     passwords:
       no_token: "You can't access this page without coming from a password reset email. If you do come from a password reset email, please make sure you used the full URL provided."
       send_instructions: "You will receive an email with instructions on how to reset your password in a few minutes."
