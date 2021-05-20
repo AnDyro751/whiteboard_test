@@ -45,6 +45,10 @@ en:
         one: "(%{count} character minimum)"
         other: "(%{count} characters minimum)"
     passwords:
+      change_my_password: Change my password
+      change_your_password: Change your password
+      confirm_new_password: Confirm new password
+      new_password: New password
       send_me_reset_password_instructions: Send me reset password instructions
       forgot_your_password: Forgot your password?
       no_token: "You can't access this page without coming from a password reset email. If you do come from a password reset email, please make sure you used the full URL provided."

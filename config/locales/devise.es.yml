@@ -78,6 +78,7 @@ es:
       failure: No has sido autorizado en la cuenta %{kind} porque "%{reason}".
       success: Has sido autorizado satisfactoriamente en la cuenta %{kind}.
     passwords:
+      new_password: Nueva contraseña
       send_me_reset_password_instructions: Envíame instrucciones para restablecer la contraseña
       forgot_your_password: Forgot your password?
       edit:
