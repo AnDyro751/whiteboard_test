@@ -33,6 +33,20 @@ en:
     assassin: Assassin
     priest: Priest
     healer: Healer
+  activerecord:
+    errors:
+      models:
+        character:
+          attributes:
+            kind_class:
+              inclusion: is not included in the list
+            color:
+              inclusion: is not included in the list
+            name:
+              blank: can't be blank
+              too_short:
+                one: is too short (minimum is 1 character)
+                other: is too short (minimum is %{count} characters)
   users:
     login: Login
     sign_up: Sign Up

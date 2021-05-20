@@ -38,6 +38,8 @@ es:
       models:
         character:
           attributes:
+            kind_class:
+              inclusion: no está incluido en la lista
             color:
               inclusion: no está incluido en la lista
             name:

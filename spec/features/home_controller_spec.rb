@@ -2,34 +2,44 @@ require 'rails_helper'
 
 RSpec.feature HomeController, type: :feature do
 
-  describe 'GET with locale query param' do
-    it 'should be return en locale' do
-      visit "/?locale=en"
-      expect(page).to have_link("Login")
-    end
-    it 'should be return es locale' do
-      visit "/?locale=es"
-      expect(page).to have_link("Iniciar sesión")
-    end
-    it 'should be return en locale with invalid option' do
-      visit "/?locale=noption"
-      expect(page).to have_link("Login")
-    end
-  end
-
-  describe 'GET /step/2 with authenticated user' do
+  describe 'logout' do
     before(:each) do
       @user = FactoryBot.create(:user)
       login_as(@user, :scope => :user)
-      visit '/step/2'
+      visit "/"
     end
-
-    it 'should redirect to /step/1' do
-      expect(current_path).to eql(new_step_path(1))
-      expect(page).to have_content('Primero asigna el nombre a tu personaje')
-      expect(page).to have_content('Ingresa el nombre de tu personaje')
+    it 'should render login button' do
+      click_link 'Cerrar sesión'
+      expect(page).to have_content('Sesión finalizada.')
     end
   end
+
+  describe 'Change locale with dropdown menu' do
+
+    it 'should be change es locale to en' do
+      visit '/'
+      find(:css, '#locale_select').find(:xpath, 'option[2]').select_option
+      expect(page).to have_link('Login')
+    end
+  end
+
+  describe 'GET with locale query param' do
+    it 'should be return en locale' do
+      visit '/?locale=en'
+      expect(page).to have_link('Login')
+    end
+    it 'should be return es locale' do
+      visit '/?locale=es'
+      expect(page).to have_link('Iniciar sesión')
+    end
+    it 'should be return en locale with invalid option' do
+      visit '/?locale=noption'
+      expect(page).to have_link('Login')
+    end
+  end
+
+
+
 
   describe 'GET / with unauthenticated user' do
     before(:each) do
@@ -60,48 +70,4 @@ RSpec.feature HomeController, type: :feature do
     end
   end
 
-  describe 'GET / with authenticated user' do
-    let(:character_name) { Faker::Name.first_name }
-    before(:each) do
-      @user = FactoryBot.create(:user)
-      login_as(@user, :scope => :user)
-      visit '/'
-    end
-
-    it 'should have logout link' do
-      expect(page).to have_content 'Cerrar sesión'
-      expect(page).to_not have_content 'Atrás'
-    end
-
-    it 'should be fill and redirect to step 2' do
-      fill_in 'Nombre', with: character_name
-      click_button 'Siguiente'
-      expect(page).to have_content "Selecciona el color de #{character_name}"
-      expect(page).to have_button 'Siguiente'
-    end
-
-    it 'should be fill step 1 and step 2, after show step 3' do
-      fill_in 'Nombre', with: character_name
-      click_button 'Siguiente'
-      find(:css, '#character_color').find(:xpath, 'option[2]').select_option
-      click_button 'Siguiente'
-      expect(page).to have_content "Selecciona la clase de #{character_name}"
-      expect(page).to have_button 'Crear'
-    end
-
-    it 'should be fill all steps and show success page' do
-      fill_in 'Nombre', with: character_name
-      click_button 'Siguiente'
-      find(:css, '#character_color').find(:xpath, 'option[2]').select_option
-      click_button 'Siguiente'
-      expect(page).to have_content "Selecciona la clase de #{character_name}"
-      find(:css, '#character_kind_class').find(:xpath, 'option[2]').select_option
-      expect(page).to have_button 'Crear'
-      click_button 'Crear'
-      expect(page).to have_content 'Mostrando personaje'
-      expect(page).to have_content(character_name)
-      expect(page).to have_content('Azul')
-      expect(page).to have_content('Hechicero')
-    end
-  end
 end

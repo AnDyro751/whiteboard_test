@@ -23,10 +23,16 @@ class CharactersController < ApplicationController
   def create
     @character = Character.new(session[:new_character].merge(character_params))
     @character.user = current_user
+    @character.valid?
+    @errors = @character.valid_errors_step(3, @character.errors)
     respond_to do |format|
       if @character.save
         session[:new_character] = nil
-        format.html { redirect_to root_path, notice: 'Character was successfully created.' }
+        if @errors.any?
+          format.js
+        else
+          format.html { redirect_to root_path, notice: 'Character was successfully created.' }
+        end
       else
         format.js
       end
